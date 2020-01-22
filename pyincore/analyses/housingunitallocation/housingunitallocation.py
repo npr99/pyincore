@@ -147,11 +147,11 @@ class HousingUnitAllocation(BaseAnalysis):
             pd.DataFrame: merged address and building inventories
 
         """
-        sorted_pnt_0 = address_point_inventory.sort_values(by=["strctid"])
-        sorted_bld_0 = building_inventory.sort_values(by=["strctid"])
+        sorted_pnt_0 = address_point_inventory.sort_values(by=["guid"])
+        sorted_bld_0 = building_inventory.sort_values(by=["guid"])
 
         addresspt_building_inv = pd.merge(sorted_bld_0, sorted_pnt_0,
-                                          how='outer', on="strctid",
+                                          how='outer', on="guid",
                                           left_index=False, right_index=False,
                                           sort=True, copy=True, indicator=True,
                                           validate="1:m")
